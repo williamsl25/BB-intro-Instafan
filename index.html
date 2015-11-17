@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>instafan_Backbone</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/html" id="instaTmpl">
+      <section class="image">
+        <img src="<%=attributes.image_url%>" alt="<%= attributes.title %>">
+        <div class="title">
+          <h3><%= attributes.title %></h3>
+          <button class="like" id="<%= attributes._id %>"><span><%= attributes.likes %>likes</span></button>
+        </div>
+      </section>
+
+    </script>
+
+  </head>
+  <body>
+    <header >
+      <nav>
+        <ul>
+          <li><a href="">nav link</a></li>
+          <li><a href="">nav link</a></li>
+          <li><a href="">nav link</a></li>
+        </ul>
+      </nav>
+    </header>
+<div class="container">
+  <section >
+      <!-- <span id="<%=attributes._id%>Delete" class="delete">delete</span>
+      <img src="<%=attributes.image_url%>" alt="<%= attributes.title %>">
+      <div class="title">
+        <h3><%= attributes.title %></h3>
+        <button class="like" id="<%= attributes._id %>"><span><%= attributes.likes %>likes</span></button>
+      </div>   -->
+  </section>
+  <aside>
+    <div class="photo">
+      <form>
+        <input id="title" type="text" name="title" value="" placeholder="Title">
+        <input id="image_url" type="text" name="image" value="" placeholder="Image Url">
+        <button class="submitBtn" type="submit" name="submit">Submit</button>
+      </form>
+    </div>
+  </aside>
+</div>
+  <script src="bundle.js" charset="utf-8"></script>
+  </body>
+</html>
