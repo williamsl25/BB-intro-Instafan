@@ -5,7 +5,7 @@
     <title>instafan_Backbone</title>
     <link rel="stylesheet" href="styles.css">
     <script type="text/html" id="instaTmpl">
-      <section class="image">
+      <section>
         <img src="<%=attributes.image_url%>" alt="<%= attributes.title %>">
         <div class="title">
           <h3><%= attributes.title %></h3>
@@ -27,7 +27,7 @@
       </nav>
     </header>
 <div class="container">
-  <section >
+  <section class="image">
       <!-- <span id="<%=attributes._id%>Delete" class="delete">delete</span>
       <img src="<%=attributes.image_url%>" alt="<%= attributes.title %>">
       <div class="title">

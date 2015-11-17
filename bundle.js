@@ -29,6 +29,7 @@ module.exports = Backbone.Model.extend({
 
 },{"backbone":4}],3:[function(require,module,exports){
 var $ = require('jquery');
+var _ = require('underscore');
 var ItemCollection = require('./itemCollection');
 var ItemModel = require('./itemModel');
 
@@ -41,18 +42,22 @@ module.exports = instaPage = {
     instaPage.styling();
     instaPage.events();
   },
-  ItemCollection: new ItemCollection(),
-    styling: function() {
-      instaPage.loadPictures();
-    },
-    events: function() {
-      $(".submitBtn").on("click",function (el) {
-      el.preventDefault();
-      var newItemModel = new ItemModel({title: $("#title").val(), image_url: $("#image_url").val()});
+  itemCollection: new ItemCollection(),
+  styling: function() {
+    instaPage.loadPictures();
+  },
+  events: function() {
+    $(".submitBtn").on("click",function (event) {
+    event.preventDefault();
+    var newItemModel = new ItemModel({title: $("#title").val(), image_url: $("#image_url").val()});
 
-      newItemModel.save().then(function () {
-        $(".image").prepend(_.template($("#instaTmpl").html())(newItemModel));
-      })
+    newItemModel.save().then(function (item) {
+      // var loadTmpl = _.template($("#instaTmpl").html());
+      // var loadedTmpl = loadTmpl(item);
+      
+      $(".image").prepend(_.template($("#instaTmpl").html())(newItemModel));
+      $('.image').append(loadedTmpl);
+    })
       $("#title").val("");
       $("#image_url").val("");
     });
@@ -63,6 +68,7 @@ loadPictures: function (collection) {
   $(".image").html("");
   instaPage.itemCollection.fetch().then(function () {
     _.each(instaPage.itemCollection.models, function (picture) {
+      console.log(picture.attributes);
       instaPage.loadTemplate("#instaTmpl", picture, ".image");
     })
   })
@@ -74,7 +80,7 @@ loadTemplate: function(template, object, element){
 
 }
 
-},{"./itemCollection":1,"./itemModel":2,"jquery":5}],4:[function(require,module,exports){
+},{"./itemCollection":1,"./itemModel":2,"jquery":5,"underscore":6}],4:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.2.3
 
